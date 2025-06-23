@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="teal_200">#26C6DA</color>
+    <color name="bottom_nav_icon_color">#808080</color> <!-- Màu xám cho các biểu tượng -->
+
+    <!-- Màu sắc cho các văn bản trong BottomNavigationView -->
+    <color name="bottom_nav_text_color">#000000</color> <!-- Màu đen cho văn bản -->
+
+    <!-- Màu sắc cho item đã chọn trong BottomNavigationView -->
+    <color name="bottom_nav_selected_item_color">#008577</color>
+    <color name="status_pending_color">#FFA500</color> <!-- Example color for pending status -->
+    <color name="status_processing_color">#0000FF</color> <!-- Example color for processing status -->
+    <color name="status_delivered_color">#008000</color> <!-- Example color for delivered status -->
+    <color name="status_cancelled_color">#FF0000</color> <!-- Example color for cancelled status -->
+    <color name="default_text_color">#000000</color> <!-- Example default text color -->
+
+    //purple 500
+    <color name="purple_500">#6200EE</color>
+</resources>

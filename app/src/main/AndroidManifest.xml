@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Quyền truy cập camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Quyền truy cập bộ nhớ -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Quyền truy cập internet để tải ảnh từ URL -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <!-- Khai báo rằng ứng dụng sử dụng camera, nhưng không bắt buộc -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <!-- Nếu ứng dụng sử dụng tính năng autofocus của camera, bạn có thể thêm dòng này (tùy chọn) -->
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OCS"
+        tools:targetApi="31">
+        <activity android:name=".ui.view.admin.AdminDashboardActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ui.view.order.AdminOrderListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.cart.LoginCheck"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.cart.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.brand.AdminBrandListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.category.AdminCategoryListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.cart.CartActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ui.view.user.AdminUserListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.product.AdminProductListActivity"
+            android:exported="false" />
+
+        <activity android:name=".ui.view.order.OrderHistoryActivity"
+            android:exported="true"
+            >
+        </activity>
+        <activity android:name=".ui.view.user.UserProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ui.view.product.ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.user.UserHomepageActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.view.product.UserProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.user.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.user.RegisterActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
