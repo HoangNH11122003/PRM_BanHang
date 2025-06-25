@@ -67,7 +67,7 @@ public class ProductController {
 
     public void loadProductsByBrand(String brandId) {
         dbClient.getExecutorService().execute(() -> {
-            UUID brandUUID = UUID.fromString(brandId); // Convert brandId to UUID
+            UUID brandUUID = UUID.fromString(brandId); // Convert brandId to UUID//
             final List<Product> products = dbClient.getAppDatabase().productDao().getProductsByBrand(brandUUID);
             dbClient.getMainHandler().post(() -> {
                 view.displayProducts(products);
