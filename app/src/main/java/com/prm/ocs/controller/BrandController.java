@@ -288,6 +288,11 @@ public class BrandController {
         return "This is a dummy method for testing purposes only.";
     }
 
+    // This method fetches all the brands and returns them with their associated product counts as DTO objects
+    // Executes on a background thread and then posts the results back to the main handler to update the UI.
+    // A simple method to fetch all brands, returning the results using a callback for simple brand data.
+
+
 // === END PLACEHOLDER METHODS ===
 
 }
