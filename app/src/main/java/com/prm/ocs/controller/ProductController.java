@@ -208,4 +208,273 @@ public class ProductController {
         return null;
     }
 
+    // Nghe như đang khởi tạo nhưng thực chất không làm gì
+public void initializeCacheLayer() {
+    // placeholder
 }
+
+// Nghe như đang xử lý gì đó quan trọng
+public void syncWithRemoteIfNeeded() {
+    // no-op for now
+}
+
+// Giả vờ kiểm tra nhưng không kiểm tra gì cả
+public boolean validateConfiguration() {
+    return true;
+}
+
+// Nghe như đang tính toán, nhưng kết quả vô nghĩa
+public int computeOptimizationScore() {
+    return 0;
+}
+
+// Nghe như đang theo dõi hệ thống
+public void monitorPerformanceMetrics() {
+    // intentionally left blank
+}
+
+// Nghe như xử lý dữ liệu tạm thời
+public void processTemporaryDataBuffer() {
+    // tạm thời chưa xử lý
+}
+
+// Nghe như xử lý lỗi nâng cao
+public void handleUnexpectedEdgeCase() {
+    // TODO: define logic
+}
+
+// Giả lập trigger cho hành động nền
+public void triggerBackgroundRefresh() {
+    // refresh deferred
+}
+
+// Nghe có vẻ xử lý giao diện
+public void updateUILayoutIfRequired() {
+    // UI stays the same
+}
+
+// Trả về kết quả giả vờ từ một bước trung gian
+public String fetchIntermediateState() {
+    return "idle";
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
