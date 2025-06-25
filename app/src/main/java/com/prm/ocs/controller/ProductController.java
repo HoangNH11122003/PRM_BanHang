@@ -19,7 +19,7 @@ public class ProductController {
     private final Context _context;
     private final DatabaseClient dbClient;
 
-    // Constructor cho trường hợp có ProductView
+    // Constructor cho trường hợp có //ProductView
     public ProductController(ProductView view) {
         this.view = view;
         Context context = getContextFromView(view);
