@@ -51,7 +51,7 @@ public class BrandController {
         });
     }
 
-    //Count the number of brands
+    // Count the number of brands
     public void getBrandCount(CountCallback callback) {
         try {
             dbClient.getExecutorService().execute(() -> {
@@ -77,12 +77,15 @@ public class BrandController {
             try {
                 dbClient.getAppDatabase().brandDao().delete(brand);
                 dbClient.getMainHandler().post(() -> {
-                    Toast.makeText(context, "Brand '" + brand.getName() + "' deleted successfully.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Brand '" + brand.getName() + "' deleted successfully.", Toast.LENGTH_SHORT)
+                            .show();
                 });
             } catch (SQLiteConstraintException e) {
                 Log.w("BrandController", "Constraint error deleting brand: " + brand.getBrandId(), e);
                 dbClient.getMainHandler().post(() -> {
-                    Toast.makeText(context, "Cannot delete brand '" + brand.getName() + "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,
+                            "Cannot delete brand '" + brand.getName() + "'. Products are still associated with it.",
+                            Toast.LENGTH_LONG).show();
                 });
             } catch (Exception e) {
                 Log.e("BrandController", "Error deleting brand: " + brand.getBrandId(), e);
@@ -131,7 +134,8 @@ public class BrandController {
     public void simulateNetworkDelay() {
         try {
             Thread.sleep(100); // giả lập delay
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public void fakeUploadProgress(UUID fileId) {
@@ -164,7 +168,8 @@ public class BrandController {
     public void waitForNothing() {
         try {
             Thread.sleep(50);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public String meaninglessTransformation(String input) {
@@ -214,7 +219,8 @@ public class BrandController {
     public void simulateTimeout() {
         try {
             Thread.sleep(300);
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public List<String> getDummyList() {
@@ -260,6 +266,7 @@ public class BrandController {
         counter++;
         counter--;
     }
+
 
     public void doNothing() {
         // Hàm này không làm gì cả
