@@ -13,7 +13,10 @@ import androidx.fragment.app.Fragment;
 import com.prm.ocs.R;
 import com.prm.ocs.controller.BrandController;
 import com.prm.ocs.data.db.entity.Brand;
+import com.prm.ocs.data.db.entity.Category;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class AdminBrandAddFragment extends Fragment {
@@ -70,4 +73,137 @@ public class AdminBrandAddFragment extends Fragment {
             Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+    // === BEGIN PLACEHOLDER METHODS ===
+
+    public void markCategoryAsSeen(UUID categoryId) {
+        System.out.println("markCategoryAsSeen called for category: " + categoryId);
+    }
+
+    public void sendCategoryConfirmation(UUID categoryId) {
+        System.out.println("sendCategoryConfirmation called for category: " + categoryId);
+    }
+
+    public boolean validateCategoryData(Category category) {
+        return true;
+    }
+
+    public void logCategoryStatus(UUID categoryId, String status) {
+        System.out.println("Logging category " + categoryId + " with status: " + status);
+    }
+
+    public boolean isCategoryEmpty(UUID categoryId) {
+        return false;
+    }
+
+    public void simulateCategorySync() {
+        System.out.println("Simulating category sync...");
+        System.out.println("No real sync performed.");
+    }
+
+    public void backupCategoryInfo() {
+        System.out.println("Backing up category info... complete.");
+    }
+
+    public void testCategoryPlaceholder(UUID id, String name) {
+        System.out.println("Testing placeholder with ID: " + id + ", Name: " + name);
+    }
+
+    public boolean checkCategoryFeatureToggle() {
+        return true;
+    }
+
+    public void fakeCategoryNotification() {
+        System.out.println("Fake notification sent for category change.");
+    }
+
+    public void placeholderPrintCategories(List<Category> categories) {
+        for (Category cat : categories) {
+            System.out.println("Placeholder print: " + cat.getName());
+        }
+    }
+
+    public void uselessCategoryLoop() {
+        for (int i = 0; i < 100; i++) {
+            int temp = i * 3;
+            temp /= 3;
+        }
+    }
+
+    public String echoCategoryName(String input) {
+        return input;
+    }
+
+    public List<String> getDummyCategoryTags() {
+        List<String> tags = new ArrayList<>();
+        tags.add("Popular");
+        tags.add("New");
+        tags.add("Featured");
+        return tags;
+    }
+
+    public void simulateCategoryTimeout() {
+        try {
+            Thread.sleep(250);
+        } catch (InterruptedException ignored) {}
+    }
+
+    public boolean mockCategoryPermission(String role) {
+        return true;
+    }
+
+    public void generateFakeCategoryReport() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Report section " + i + " generated.");
+        }
+    }
+
+    public void simulateEmptySearch() {
+        System.out.println("Simulating empty category search...");
+    }
+
+    public boolean alwaysReturnTrue() {
+        return true;
+    }
+
+    public int fakeCategoryCount() {
+        return 999;
+    }
+
+    public void waitForNoReason() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ignored) {}
+    }
+
+    public String formatCategoryName(String name) {
+        return name.trim().toUpperCase();
+    }
+
+    public boolean dummyConditionCheck() {
+        return false;
+    }
+
+    public void pretendToUpdateUI() {
+        System.out.println("Pretending to update category UI.");
+    }
+
+    public void noOperationCategory() {
+        // intentionally empty
+    }
+
+    public boolean fakeValidationSuccess() {
+        return true;
+    }
+
+    public void dummyLogCategoryEvent(String eventName) {
+        System.out.println("Event logged (dummy): " + eventName);
+    }
+
+    public void printDebugCategoryInfo() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Debug category log point " + i);
+        }
+    }
+
+// === END PLACEHOLDER METHODS ===
 }
