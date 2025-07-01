@@ -193,7 +193,6 @@ public class ProductController {
         // Hàm mẫu trả về danh sách rỗng
         return java.util.Collections.emptyList();
     }
-
     public void doAbsolutelyNothing() {
         // Không có nội dung gì
     }
@@ -208,4 +207,5 @@ public class ProductController {
         return null;
     }
 
+    //
 }
