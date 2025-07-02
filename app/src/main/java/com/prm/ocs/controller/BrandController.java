@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// change package to match the file structure
 public class BrandController {
     private final DatabaseClient dbClient;
     private final Context context;
