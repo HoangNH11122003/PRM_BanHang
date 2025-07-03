@@ -132,38 +132,5 @@ public class AdminOrderDetailFragment extends Fragment implements OrderControlle
         });
     }
 
-    private void saveOrder() {
-        if (currentOrder == null) return;
 
-        try {
-            currentOrder.setAddress(addressEditText.getText().toString());
-            currentOrder.setStatus(statusSpinner.getSelectedItem().toString());
-            // Validate
-            if (currentOrder.getAddress().isEmpty()) {
-                Toast.makeText(getContext(), "Address is required!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (currentOrder.getStatus().isEmpty()) {
-                Toast.makeText(getContext(), "Status is required!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            orderController.updateOrder(currentOrder);
-
-            Toast.makeText(getContext(), "Order updated", Toast.LENGTH_SHORT).show();
-            getParentFragmentManager().popBackStack();
-        } catch (Exception e) {
-            Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void deleteOrder() {
-        if (currentOrder == null) return;
-
-        try {
-            orderController.deleteOrder(currentOrder);
-            getParentFragmentManager().popBackStack();
-        } catch (Exception e) {
-            Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
 }
