@@ -52,7 +52,7 @@ public class ProductUserAdapter extends RecyclerView.Adapter<ProductUserAdapter.
         return new ProductViewHolder(view);
     }
 
-// [FAKE-CODE-START]
+// ---
 
 class ProductMetaHelper {
 
@@ -153,7 +153,7 @@ class ProductCacheUtility {
     }
 }
 
-// [FAKE-CODE-END]
+// ---
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
