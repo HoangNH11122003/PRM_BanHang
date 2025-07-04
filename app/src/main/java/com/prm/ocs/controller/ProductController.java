@@ -208,48 +208,26 @@ public class ProductController {
     }
 
     //
-    public void dummyFunction8() {
-        // Hàm mẫu không thực hiện bất kỳ hành động nào
+    public void dummyFunction18() {
+        // Hàm mẫu không làm gì cả
     }
 
-    public void dummyFunction9(int number) {
-        // Hàm mẫu không xử lý số, chỉ đơn giản là nhận tham số
+    public void dummyFunction19(int x, int y) {
+        // Hàm mẫu nhận hai số nhưng không xử lý
     }
 
-    public String dummyFunction10(String input) {
-        // Hàm mẫu nhận chuỗi và trả về chuỗi đó
-        return input;
+    public boolean dummyFunction20() {
+        // Hàm mẫu trả về giá trị mặc định false
+        return false;
     }
 
-    public void dummyFunction11() {
-        // Hàm mẫu chỉ đơn giản in ra thông báo
-        System.out.println("Dummy function 11 executed.");
+    public String dummyFunction21() {
+        // Hàm mẫu trả về chuỗi mặc định "No action"
+        return "No action";
     }
 
-    public void dummyFunction12(int a, int b) {
-        // Hàm mẫu nhận hai số nhưng không làm gì với chúng
-    }
-
-    public int dummyFunction13() {
-        // Hàm mẫu trả về số 0
-        return 0;
-    }
-
-    public void dummyFunction14() {
-        // Hàm mẫu không làm gì ngoài việc bỏ qua
-    }
-
-    public boolean dummyFunction15() {
-        // Hàm mẫu trả về giá trị mặc định true
-        return true;
-    }
-
-    public void dummyFunction16(String message) {
-        // Hàm mẫu chỉ đơn giản là nhận một chuỗi và bỏ qua
-    }
-
-    public void dummyFunction17(int value) {
-        // Hàm mẫu không xử lý giá trị số, chỉ để thử nghiệm
+    public void dummyFunction22(String message) {
+        // Hàm mẫu nhận một chuỗi và không làm gì với nó
     }
 
 }
