@@ -72,9 +72,7 @@ public class AdminOrderListFragment extends Fragment implements OrderController.
         View view = inflater.inflate(R.layout.fragment_admin_order_list, container, false);
 
         findViews(view);
-        setupRecyclerView();
         setupSearchView();
-        setupDateRangePicker();
         setupClearButton();
         setupSwipeToRefresh(); // Setup listener refresh
 
@@ -97,16 +95,7 @@ public class AdminOrderListFragment extends Fragment implements OrderController.
         emptyViewText = view.findViewById(R.id.empty_view_text);
     }
 
-    private void setupRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        // Adapter khởi tạo với danh sách sẽ hiển thị (ban đầu rỗng)
-        adapter = new AdminOrderListAdapter(getContext(), displayedOrderList, order -> {
-            if (getActivity() instanceof AdminOrderListActivity) { // Hoặc interface callback ra Activity
-                ((AdminOrderListActivity) getActivity()).showOrderDetail(order.getOrder().getOrderId());
-            }
-        });
-        recyclerView.setAdapter(adapter);
-    }
+
 
     private void setupSearchView() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -125,59 +114,9 @@ public class AdminOrderListFragment extends Fragment implements OrderController.
         });
     }
 
-    private void setupDateRangePicker() {
-        dateRangePickerButton.setOnClickListener(v -> {
-            MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
-            builder.setTitleText("Chọn khoảng ngày");
 
-            // Set giá trị mặc định nếu đã chọn trước đó
-            if (currentStartDate != null && currentEndDate != null) {
-                builder.setSelection(new Pair<>(currentStartDate, currentEndDate));
-            }
-
-            MaterialDatePicker<Pair<Long, Long>> picker = builder.build();
-
-            picker.addOnPositiveButtonClickListener(selection -> {
-
-                currentStartDate = selection.first;
-                currentEndDate = adjustEndDate(selection.second);
-
-                // Hiển thị ngày đã chọn
-                String startDateStr = displayDateFormat.format(new Date(currentStartDate));
-                String endDateStr = displayDateFormat.format(new Date(selection.second)); // Hiển thị ngày người dùng chọn
-                selectedDateRangeText.setText(String.format("%s - %s", startDateStr, endDateStr));
-                selectedDateRangeText.setVisibility(View.VISIBLE);
-
-                applyFilters(); // Lọc lại danh sách
-            });
-
-            picker.addOnNegativeButtonClickListener(dialog -> {
-
-            });
-            picker.addOnCancelListener(dialog -> {
-
-            });
-
-
-            picker.show(getParentFragmentManager(), picker.toString());
-        });
-    }
 
     // Điều chỉnh endDate về cuối ngày (23:59:59.999) theo Local Timezone
-    private Long adjustEndDate(Long utcMidnightMillis) {
-        if (utcMidnightMillis == null) return null;
-        Calendar calendar = Calendar.getInstance(TimeZone.getDefault()); // Dùng Timezone mặc định của máy
-        calendar.setTimeInMillis(utcMidnightMillis);
-        // Chuyển về đầu ngày theo local timezone (đề phòng picker trả về ko chuẩn)
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        // Cộng thêm 1 ngày và trừ đi 1 mili giây để lấy thời điểm cuối ngày
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        calendar.add(Calendar.MILLISECOND, -1);
-        return calendar.getTimeInMillis();
-    }
 
 
     private void setupClearButton() {
@@ -210,8 +149,8 @@ public class AdminOrderListFragment extends Fragment implements OrderController.
 
         if (reloadData) {
             loadOrderData(); // Tải lại toàn bộ dữ liệu
-        } else {
-            applyFilters(); // Chỉ áp dụng lại bộ lọc (trống) lên dữ liệu hiện có
+
+
         }
     }
 
@@ -225,129 +164,10 @@ public class AdminOrderListFragment extends Fragment implements OrderController.
         orderController.loadOrders(this); // Callback sẽ là onOrdersLoaded
     }
 
-    @Override
-    public void onOrdersLoaded(List<Order> orders) {
-        Log.d(TAG, "Loaded " + (orders != null ? orders.size() : 0) + " base orders.");
-        if (getView() == null) return;
 
-        // Ẩn biểu tượng loading nếu đang refresh
-        if (swipeRefreshLayout.isRefreshing()) {
-            swipeRefreshLayout.setRefreshing(false);
-        }
-
-        // Xử lý lấy product count (logic này cần xem lại nếu quá chậm)
-        // Tạm thời giữ nguyên logic cũ để tập trung vào search
-        fullOrderList.clear(); // Xóa danh sách gốc cũ
-        if (orders == null || orders.isEmpty()) {
-            Log.d(TAG, "Order list is empty or null.");
-            applyFilters(); // Áp dụng bộ lọc (sẽ hiển thị empty view)
-            return;
-        }
-
-        processedOrdersCounter = new AtomicInteger(0);
-        final int totalOrdersToProcess = orders.size();
-        List<OrderSummaryDto> tempSummaries = new ArrayList<>(); // List tạm để build
-
-        for (Order order : orders) {
-            final Order currentOrder = order;
-            orderController.calculateProductCount(currentOrder.getOrderId(), new OrderController.ProductCountCallback() {
-                @Override
-                public void onProductCountCalculated(int productCount) {
-                    double totalAmount = currentOrder.getTotalAmount();
-                    OrderSummaryDto summaryDto = new OrderSummaryDto(currentOrder, productCount, totalAmount);
-                    tempSummaries.add(summaryDto);
-
-                    int currentProcessedCount = processedOrdersCounter.incrementAndGet();
-                    if (currentProcessedCount == totalOrdersToProcess) {
-                        Log.d(TAG, "Finished processing all product counts.");
-                        // --- Quan trọng: Cập nhật danh sách gốc và áp dụng bộ lọc ---
-                        fullOrderList.clear();
-                        fullOrderList.addAll(tempSummaries); // Lưu vào danh sách gốc
-                        applyFilters(); // Áp dụng bộ lọc hiện tại lên danh sách mới tải
-                    }
-                }
-                // Thêm onError cho calculateProductCount nếu có
-            });
-        }
-    }
 
     // Hàm áp dụng bộ lọc hiện tại lên fullOrderList và cập nhật adapter
-    private void applyFilters() {
-        Log.d(TAG, "Applying filters: Text='" + currentTextQuery + "', Start=" + currentStartDate + ", End=" + currentEndDate);
-        if (getView() == null) return;
 
-        List<OrderSummaryDto> filteredList;
-
-        // Lọc bằng Stream API cho gọn
-        filteredList = fullOrderList.stream()
-                .filter(summary -> {
-                    Order order = summary.getOrder();
-                    if (order == null || order.getOrderId() == null) return false; // Add null check for orderId
-
-                    // 1. Lọc theo Text (Order ID hoặc User ID)
-                    boolean textMatch = true; // Default true if query is empty
-                    if (!currentTextQuery.isEmpty()) {
-                        String lowerQuery = currentTextQuery.toLowerCase();
-
-                        // *** START: Modified Text Match Logic ***
-                        if (lowerQuery.length() == 32) {
-                            // Special case: Assume 32-char query is a UUID without hyphens
-                            String orderIdNoHyphen = order.getOrderId().toString().replace("-", "").toLowerCase();
-                            String userIdNoHyphen = (order.getUserId() != null) ? order.getUserId().toString().replace("-", "").toLowerCase() : "";
-
-                            // Exact match against UUIDs (without hyphens)
-                            textMatch = orderIdNoHyphen.equals(lowerQuery) || (!userIdNoHyphen.isEmpty() && userIdNoHyphen.equals(lowerQuery));
-                        } else {
-                            // Original logic: Check if query is contained within full UUID strings
-                            String orderIdStr = order.getOrderId().toString().toLowerCase();
-                            // Handle potential null UserId safely
-                            String userIdStr = (order.getUserId() != null) ? order.getUserId().toString().toLowerCase() : "";
-                            textMatch = orderIdStr.contains(lowerQuery) || (!userIdStr.isEmpty() && userIdStr.contains(lowerQuery));
-                        }
-                        // *** END: Modified Text Match Logic ***
-                    }
-
-                    // 2. Lọc theo Ngày
-                    boolean dateMatch = true; // Mặc định là true nếu không chọn ngày
-                    if (currentStartDate != null && currentEndDate != null) {
-                        if (order.getOrderDate() == null) return false; // Add null check for date
-                        long orderTime = order.getOrderDate().getTime();
-                        dateMatch = orderTime >= currentStartDate && orderTime <= currentEndDate;
-                    } else if (currentStartDate != null) {
-                        if (order.getOrderDate() == null) return false; // Add null check for date
-                        dateMatch = order.getOrderDate().getTime() >= currentStartDate;
-                    } else if (currentEndDate != null) {
-                        if (order.getOrderDate() == null) return false; // Add null check for date
-                        long orderTime = order.getOrderDate().getTime();
-                        dateMatch = orderTime <= currentEndDate;
-                    }
-
-                    // Kết hợp AND
-                    return textMatch && dateMatch;
-                })
-                .collect(Collectors.toList());
-
-        Log.d(TAG, "Filtering complete. Found " + filteredList.size() + " matching orders.");
-
-        // Cập nhật Adapter (Logic giữ nguyên)
-        displayedOrderList.clear();
-        displayedOrderList.addAll(filteredList);
-        adapter.notifyDataSetChanged();
-
-        // Cập nhật Empty View (Logic giữ nguyên)
-        if (displayedOrderList.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptyViewContainer.setVisibility(View.VISIBLE);
-            if (!currentTextQuery.isEmpty() || currentStartDate != null) {
-                emptyViewText.setText("Không tìm thấy đơn hàng phù hợp.");
-            } else {
-                emptyViewText.setText("Chưa có đơn hàng nào.");
-            }
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyViewContainer.setVisibility(View.GONE);
-        }
-    }
 
     @Override
     public void onResume() {
