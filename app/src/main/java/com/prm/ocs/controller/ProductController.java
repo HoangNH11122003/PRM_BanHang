@@ -208,26 +208,25 @@ public class ProductController {
     }
 
     //
-    public void dummyFunction18() {
+    public void dummyFunction23() {
         // Hàm mẫu không làm gì cả
     }
 
-    public void dummyFunction19(int x, int y) {
-        // Hàm mẫu nhận hai số nhưng không xử lý
+    public void dummyFunction24() {
+        // Hàm mẫu không thực hiện hành động nào
     }
 
-    public boolean dummyFunction20() {
-        // Hàm mẫu trả về giá trị mặc định false
-        return false;
+    public void dummyFunction25(int num) {
+        // Hàm mẫu nhận một tham số nhưng không làm gì với nó
     }
 
-    public String dummyFunction21() {
-        // Hàm mẫu trả về chuỗi mặc định "No action"
-        return "No action";
+    public void dummyFunction26() {
+        // Hàm mẫu chỉ đơn giản là để tạo ra một placeholder
     }
 
-    public void dummyFunction22(String message) {
-        // Hàm mẫu nhận một chuỗi và không làm gì với nó
+    public String dummyFunction27() {
+        // Hàm mẫu trả về chuỗi "Dummy" nhưng không có giá trị sử dụng
+        return "Dummy";
     }
 
 }
