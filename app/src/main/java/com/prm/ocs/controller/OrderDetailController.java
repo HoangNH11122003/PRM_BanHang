@@ -33,19 +33,6 @@ public class OrderDetailController {
             }
         });
     }
-
-    public void updateOrderDetail(OrderDetail orderDetail) {
-        dbClient.getExecutorService().execute(() -> {
-            dbClient.getAppDatabase().orderDetailDao().update(orderDetail);
-        });
-    }
-
-    public void deleteOrderDetail(OrderDetail orderDetail) {
-        dbClient.getExecutorService().execute(() -> {
-            dbClient.getAppDatabase().orderDetailDao().delete(orderDetail);
-        });
-    }
-
     public interface OrderDetailsCallback {
         void onOrderDetailsLoaded(List<OrderDetail> orderDetails);
     }
