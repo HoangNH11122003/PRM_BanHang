@@ -74,7 +74,6 @@ public class AdminOrderAddFragment extends Fragment {
         productController = new ProductController(getContext());
 
         // Thiết lập DatePicker cho order_date
-        orderDateTextView.setOnClickListener(v -> showDatePickerDialog());
 
         // Thiết lập Spinner cho status
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -92,28 +91,10 @@ public class AdminOrderAddFragment extends Fragment {
         ImageButton addOrderDetailButton = view.findViewById(R.id.add_order_detail_button);
         addOrderDetailButton.setOnClickListener(v -> addOrderDetailRow());
 
-        saveButton.setOnClickListener(v -> prepareOrder());
-
         return view;
     }
 
-    private void showDatePickerDialog() {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                getContext(),
-                (view, selectedYear, selectedMonth, selectedDay) -> {
-                    Calendar selectedDate = Calendar.getInstance();
-                    selectedDate.set(selectedYear, selectedMonth, selectedDay);
-                    orderDateTextView.setText(dateFormat.format(selectedDate.getTime()));
-                },
-                year, month, day
-        );
-        datePickerDialog.show();
-    }
 
     private void addOrderDetailRow() {
         View orderDetailRow = LayoutInflater.from(getContext()).inflate(R.layout.item_order_detail_input, null);
@@ -122,97 +103,7 @@ public class AdminOrderAddFragment extends Fragment {
         orderDetailsContainer.addView(orderDetailRow);
     }
 
-    private void prepareOrder() {
-        try {
-            // Tạo Order mới
-            Order newOrder = new Order();
-            newOrder.setOrderId(UUID.fromString(getArguments().getString(ARG_ORDER_ID)));
-            UUID userId = UUIDUtils.parseUUID(userIdEditText.getText().toString());
-            if (userId == null) {
-                Toast.makeText(getContext(), "Invalid User ID format", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            newOrder.setUserId(userId);
 
-            // Parse Order Date
-            Date orderDate = dateFormat.parse(orderDateTextView.getText().toString());
-            newOrder.setOrderDate(orderDate);
 
-            newOrder.setAddress(addressEditText.getText().toString());
-            newOrder.setStatus(statusSpinner.getSelectedItem().toString());
 
-            // Chuẩn bị Order Details và tính Total Amount
-            orderDetailsList.clear();
-            totalAmount = 0.0;
-            processedItems = 0;
-
-            for (int i = 0; i < orderDetailsContainer.getChildCount(); i++) {
-                View row = orderDetailsContainer.getChildAt(i);
-
-                EditText productIdEditText = row.findViewById(R.id.product_id_input);
-                // Parse UUID from String input like "123e4567e89b12d3a456426614174000"
-                UUID productId = UUIDUtils.parseUUID(productIdEditText.getText().toString());
-                if (productId == null) {
-                    Toast.makeText(getContext(), "Invalid Product ID format at row " + (i + 1), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                EditText quantityEditText = row.findViewById(R.id.quantity_input);
-
-                int quantity;
-                try {
-                    quantity = Integer.parseInt(quantityEditText.getText().toString());
-                    if (quantity <= 0) {
-                        Toast.makeText(getContext(), "Quantity must be greater than 0 at row " + (i + 1), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Invalid quantity format at row " + (i + 1), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                OrderDetail orderDetail = new OrderDetail();
-                orderDetail.setOrderId(newOrder.getOrderId());
-                orderDetail.setProductId(productId);
-                orderDetail.setQuantity(quantity);
-
-                // Truy vấn giá sản phẩm trên luồng nền
-                productController.getProductById(productId, new ProductController.ProductCallback() {
-                    @Override
-                    public void onProductLoaded(Product product) {
-                        int leftProducts = (product != null) ? product.getStock() : 0;
-
-                        if (quantity > leftProducts) {
-                            Toast.makeText(getContext(), "Not enough products in stock for product " + productId, Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        double unitPrice = (product != null) ? product.getSellingPrice() : 0.0;
-                        orderDetail.setPrice(unitPrice);
-                        totalAmount += unitPrice * quantity;
-                        orderDetailsList.add(orderDetail);
-
-                        // Kiểm tra xem đã xử lý hết các sản phẩm chưa
-                        processedItems++;
-                        if (processedItems == orderDetailsContainer.getChildCount()) {
-                            // Đã xử lý hết, lưu Order
-                            saveOrder(newOrder);
-                        }
-                    }
-                });
-            }
-        } catch (ParseException e) {
-            Toast.makeText(getContext(), "Invalid date format. Use dd/MM/yyyy", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void saveOrder(Order newOrder) {
-        newOrder.setTotalAmount(totalAmount);
-        orderController.addOrder(newOrder);
-        orderDetailController.addOrderDetails(orderDetailsList);
-        Toast.makeText(getContext(), "Order added", Toast.LENGTH_SHORT).show();
-        getParentFragmentManager().popBackStack();
-    }
 }
