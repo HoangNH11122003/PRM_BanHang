@@ -20,44 +20,6 @@ import com.prm.ocs.ui.manager.SessionManager;
 
 import java.util.UUID;
 
-//code origin 
-// public class ProductDetailActivity extends AppCompatActivity {
-
-//     private ImageView ivProductImage;
-//     private TextView tvProductName;
-//     private TextView tvSellingPrice;
-
-//     @Override
-//     protected void onCreate(Bundle savedInstanceState) {
-//         super.onCreate(savedInstanceState);
-//         setContentView(R.layout.activity_product_detail);
-
-//         ivProductImage = findViewById(R.id.ivProductImage);
-//         tvProductName = findViewById(R.id.tvProductName);
-//         tvSellingPrice = findViewById(R.id.tvSellingPrice);
-
-//         String productId = getIntent().getStringExtra("productId");
-//         if (productId != null) {
-//             UUID productUUID = UUID.fromString(productId);
-
-//             DatabaseClient dbClient = DatabaseClient.getInstance(this);
-//             dbClient.getExecutorService().execute(() -> {
-//                 Product product = dbClient.getAppDatabase().productDao().getProductById(productUUID);
-//                 runOnUiThread(() -> {
-//                     if (product != null) {
-//                         tvProductName.setText(product.getName());
-//                         tvSellingPrice.setText("$" + product.getSellingPrice());
-
-//                         String imageName = product.getImage();
-//                         int imageResId = getResources().getIdentifier(imageName.replace(".png", ""), "drawable", getPackageName());
-//                         Glide.with(this).load(imageResId).into(ivProductImage);
-//                     }
-//                 });
-//             });
-//         }
-//     }
-// }
-
 public class ProductDetailActivity extends AppCompatActivity {
 
 
