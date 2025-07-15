@@ -127,6 +127,251 @@ public class UserController {
     // // // // });
     // // // // }
     // // // // });
+
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
+    // delete user catch sql constraint exception when user has orders
+    // // // //dbClient.getExecutorService().execute(() -> {
+    // // // // try {
+    // // // // dbClient.getAppDatabase().brandDao().delete(brand);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Brand '" + brand.getName() + "' deleted
+    // successfully.", Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // } catch (SQLiteConstraintException e) {
+    // // // // Log.w("BrandController", "Constraint error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Cannot delete brand '" + brand.getName() +
+    // "'. Products are still associated with it.", Toast.LENGTH_LONG).show();
+    // // // // });
+    // // // // } catch (Exception e) {
+    // // // // Log.e("BrandController", "Error deleting brand: " +
+    // brand.getBrandId(), e);
+    // // // // dbClient.getMainHandler().post(() -> {
+    // // // // Toast.makeText(context, "Error deleting brand: " + e.getMessage(),
+    // Toast.LENGTH_SHORT).show();
+    // // // // });
+    // // // // }
+    // // // // });
     public void deleteUser(User user) {
         dbClient.getExecutorService().execute(() -> {
             try {
