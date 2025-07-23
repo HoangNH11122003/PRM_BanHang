@@ -101,10 +101,6 @@ public class BrandController {
         void onBrandsLoaded(List<BrandProductsDto> brands);
     }
 
-    // Callback cho model thường
-    public interface BrandSimpleCallback {
-        void onSimpleBrandsLoaded(List<Brand> brands);
-    }
 
     public interface BrandDetailCallback {
         void onBrandLoaded(Brand brand);
@@ -267,38 +263,6 @@ public class BrandController {
         counter--;
     }
 
-
-    public void doNothing() {
-        // Hàm này không làm gì cả
-    }
-
-    public int returnZero() {
-        // Hàm này luôn trả về 0
-        return 0;
-    }
-
-    public boolean alwaysTrue() {
-        // Hàm này luôn trả về true
-        return true;
-    }
-
-    public void logNothing() {
-        // Không in log, không xử lý gì cả
-    }
-
-    public void acceptEverything(Object obj) {
-        // Nhận vào bất kỳ object nào nhưng không xử lý
-    }
-
-    public String randomComment() {
-        // Trả về một chuỗi không liên quan
-        return "This is a dummy method for testing purposes only.";
-    }
-
-    // This method fetches all the brands and returns them with their associated product counts as DTO objects
-    // Executes on a background thread and then posts the results back to the main handler to update the UI.
-
-
-// === END PLACEHOLDER METHODS ===
+    // === END PLACEHOLDER METHODS ===
 
 }
