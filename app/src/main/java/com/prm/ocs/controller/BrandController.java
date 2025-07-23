@@ -101,10 +101,6 @@ public class BrandController {
         void onBrandsLoaded(List<BrandProductsDto> brands);
     }
 
-    // Callback cho model thường
-    public interface BrandSimpleCallback {
-        void onSimpleBrandsLoaded(List<Brand> brands);
-    }
 
     public interface BrandDetailCallback {
         void onBrandLoaded(Brand brand);
