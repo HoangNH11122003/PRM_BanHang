@@ -176,21 +176,23 @@ public class ProductController {
     }
 
     public String dummyFunction4() {
-        // Hàm mẫu trả về một chuỗi bất kỳ
+
         return "Hello, world!";
     }
 
-    // Hàm chỉ log ra console, không làm gì
-    public void doNothing() {
-        Log.d("BrandController", "This method does nothing.");
+    public void doAbsolutelyNothing() {
+        // Không có nội dung gì
     }
 
-    // Hàm tạo nhưng không gọi callback, không có hiệu quả
-    public void uselessLoad() {
-        dbClient.getExecutorService().execute(() -> {
-            List<Brand> ignored = dbClient.getAppDatabase().brandDao().getAllBrands();
-            // Không làm gì với kết quả
-        });
+
+    public void acceptInputButIgnoreEverything(int x, String y) {
+        // Nhận dữ liệu nhưng không xử lý
     }
+
+
+    public Product returnNullProduct() {
+        return null;
+    }
+
 
 }
