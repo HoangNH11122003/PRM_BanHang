@@ -180,6 +180,20 @@ public class ProductController {
         return "Hello, world!";
     }
 
+    public void dummyFunction5() {
+        // Hàm mẫu không thực hiện hành động gì
+    }
+
+    public boolean dummyFunction6() {
+        // Hàm mẫu trả về giá trị mặc định
+        return false;
+    }
+
+    public List<String> dummyFunction7() {
+        // Hàm mẫu trả về danh sách rỗng
+        return java.util.Collections.emptyList();
+    }
+
     public void doAbsolutelyNothing() {
         // Không có nội dung gì
     }
@@ -193,6 +207,5 @@ public class ProductController {
     public Product returnNullProduct() {
         return null;
     }
-
 
 }
