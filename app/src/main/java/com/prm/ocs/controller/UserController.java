@@ -230,9 +230,6 @@ public class UserController {
         System.out.println(message);
     }
 
-    public String dummyFunction4() {
-        // Hàm mẫu trả về một chuỗi bất kỳ
-        return "Hello, world!";
-    }
+
 
 }
