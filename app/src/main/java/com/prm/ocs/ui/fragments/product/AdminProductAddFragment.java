@@ -1,3 +1,55 @@
+public class AdminProductAddFragment extends Fragment implements ProductView {
+    private EditText nameEditText, priceEditText;
+    private Button saveButton;
+    private ProductController productController;
+
+    private static final String ARG_PRODUCT_ID = "product_id";
+
+    public static AdminProductAddFragment newInstance(UUID productId) {
+        AdminProductAddFragment fragment = new AdminProductAddFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PRODUCT_ID, productId.toString());
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_admin_product_detail, container, false);
+
+        nameEditText = view.findViewById(R.id.clothes_name);
+        priceEditText = view.findViewById(R.id.clothes_selling_price);
+        saveButton = view.findViewById(R.id.save_button);
+
+        productController = new ProductController(this);
+
+        saveButton.setOnClickListener(v -> {
+            Product product = new Product();
+            product.setProductId(UUID.fromString(getArguments().getString(ARG_PRODUCT_ID)));
+            product.setName(nameEditText.getText().toString());
+            product.setSellingPrice(Double.parseDouble(priceEditText.getText().toString()));
+            productController.addProduct(product);
+            Toast.makeText(getContext(), "Product added", Toast.LENGTH_SHORT).show();
+        });
+
+        return view;
+    }
+
+    @Override
+    public void displayProductDetails(Product product) {
+        nameEditText.setText(product.getName() != null ? product.getName() : "");
+        priceEditText.setText(String.valueOf(product.getSellingPrice()));
+    }
+
+    @Override
+    public void displayProducts(List<Product> products) {
+        // Không sử dụng ở đây
+    }
+}
+
+
+
+
 package com.prm.ocs.ui.fragments.product;
 
 import android.app.Activity;

@@ -22,6 +22,7 @@ public class AdminCategoryAddFragment extends Fragment {
     private Button saveButton;
     private CategoryController categoryController;
 
+
     private static final String ARG_CATEGORY_ID = "category_id";
 
     public static AdminCategoryAddFragment newInstance(UUID categoryId) {
@@ -228,4 +229,6 @@ public class AdminCategoryAddFragment extends Fragment {
     }
 
 // === END PLACEHOLDER METHODS ===
+
+
 }

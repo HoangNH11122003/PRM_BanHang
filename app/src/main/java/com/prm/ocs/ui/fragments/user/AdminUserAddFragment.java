@@ -286,36 +286,6 @@ public class AdminUserAddFragment extends Fragment implements UserView {
         });
     }
 
-    private void proceedWithUserInsertion(String username, String email, String phone, int role, boolean isVerified) {
-        try {
-            User newUser = new User();
-            newUser.setUserId(UUID.randomUUID());
-            newUser.setUsername(username);
-            newUser.setEmail(email);
-            newUser.setPhone(phone);
-            newUser.setPassword("password");
-            newUser.setRole(role);
-            newUser.setVerified(isVerified);
-            newUser.setImgUrl(imagePath);
-
-            Log.d(TAG, "Inserting user: " + newUser.getUsername());
-            userController.insertUser(newUser);
-
-        } catch (Exception e) {
-            Log.e(TAG, "Error creating user object", e);
-            showLoading(false);
-            Toast.makeText(getContext(), "Error preparing user data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void showLoading(boolean isLoading) {
-        if (loadingIndicator != null) {
-            loadingIndicator.setVisibility(isLoading ? View.VISIBLE : View.GONE);
-        }
-        if (saveButton != null) {
-            saveButton.setEnabled(!isLoading);
-        }
-    }
 
     @Override
     public void displayUsers(List<User> users) {
@@ -325,12 +295,5 @@ public class AdminUserAddFragment extends Fragment implements UserView {
     public void displayUserDetails(User user) {
     }
 
-    @Override
-    public void onLoginSuccess(User user) {
-        if (getView() == null) return;
-        showLoading(false);
-        Log.d(TAG, "User operation successful (Insert/Update). User: " + (user != null ? user.getUsername() : "N/A"));
-        Toast.makeText(getContext(), "Operation Successful!", Toast.LENGTH_SHORT).show();
-        getParentFragmentManager().popBackStack();
-    }
+
 }
