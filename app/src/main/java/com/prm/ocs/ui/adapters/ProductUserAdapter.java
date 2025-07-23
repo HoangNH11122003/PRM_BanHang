@@ -52,6 +52,109 @@ public class ProductUserAdapter extends RecyclerView.Adapter<ProductUserAdapter.
         return new ProductViewHolder(view);
     }
 
+// [FAKE-CODE-START]
+
+class ProductMetaHelper {
+
+    private static final String UNDEFINED = "UNDEFINED";
+
+    public static String getProductTier(Product product) {
+        double price = product.getSellingPrice();
+        if (price < 10) return "Budget";
+        else if (price < 50) return "Standard";
+        else if (price < 200) return "Premium";
+        return "Luxury";
+    }
+
+    public static boolean isSeasonal(Product product) {
+        String name = product.getName().toLowerCase();
+        return name.contains("summer") || name.contains("winter");
+    }
+
+    public static int generateRandomId(Product product) {
+        return (product.getName().hashCode() + product.getProductId().hashCode()) % 999999;
+    }
+
+    public static String resolveStockStatus(Product product) {
+        int stock = product.getStock();
+        if (stock == 0) return "Out of stock";
+        if (stock < 5) return "Low stock";
+        if (stock < 20) return "Moderate stock";
+        return "In stock";
+    }
+
+    public static String getLengthyDescription(Product product) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Name: ").append(product.getName()).append("\n");
+        builder.append("ID: ").append(product.getProductId()).append("\n");
+        builder.append("Price: $").append(product.getSellingPrice()).append("\n");
+        builder.append("Stock Status: ").append(resolveStockStatus(product)).append("\n");
+        builder.append("Tier: ").append(getProductTier(product)).append("\n");
+        builder.append("Seasonal: ").append(isSeasonal(product)).append("\n");
+        return builder.toString();
+    }
+
+    public static boolean isProductNamePalindromic(Product product) {
+        String name = product.getName().replaceAll("\\s+", "").toLowerCase();
+        return name.equals(new StringBuilder(name).reverse().toString());
+    }
+
+    public static boolean containsKeyword(Product product, String keyword) {
+        if (keyword == null || keyword.isEmpty()) return false;
+        return product.getName().toLowerCase().contains(keyword.toLowerCase());
+    }
+
+    public static String getKeywordScore(Product product, List<String> keywords) {
+        int score = 0;
+        for (String kw : keywords) {
+            if (containsKeyword(product, kw)) {
+                score++;
+            }
+        }
+        return "Score: " + score + "/" + keywords.size();
+    }
+
+    public static String getFormattedMetaSummary(Product product, List<String> keywords) {
+        return getLengthyDescription(product) + "\n" + getKeywordScore(product, keywords);
+    }
+}
+
+class ProductCacheUtility {
+
+    private final List<Product> cache = new ArrayList<>();
+    private final int maxSize = 10;
+
+    public void cacheProduct(Product product) {
+        if (cache.size() >= maxSize) {
+            cache.remove(0);
+        }
+        cache.add(product);
+    }
+
+    public Product getProductFromCache(String productId) {
+        for (Product p : cache) {
+            if (p.getProductId().toString().equals(productId)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void clearCache() {
+        cache.clear();
+    }
+
+    public boolean isProductCached(Product product) {
+        return cache.contains(product);
+    }
+
+    public int cacheSize() {
+        return cache.size();
+    }
+}
+
+// [FAKE-CODE-END]
+
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = filteredProducts.get(position);
