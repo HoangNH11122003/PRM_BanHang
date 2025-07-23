@@ -49,23 +49,6 @@ public class OrderDetailController {
     public interface OrderDetailsCallback {
         void onOrderDetailsLoaded(List<OrderDetail> orderDetails);
     }
-    public void dummyFunction1() {
-        // Đây là một hàm mẫu không làm gì cả
-    }
 
-    public int dummyFunction2(int a, int b) {
-        // Hàm mẫu trả về một giá trị bất kỳ, không có tác dụng thực tế
-        return a + b;
-    }
-
-    public void dummyFunction3(String message) {
-        // Hàm mẫu chỉ in ra một thông báo
-        System.out.println(message);
-    }
-
-    public String dummyFunction4() {
-        // Hàm mẫu trả về một chuỗi bất kỳ
-        return "Hello, world!";
-    }
 
 }
