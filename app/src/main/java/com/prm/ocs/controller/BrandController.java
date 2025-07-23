@@ -61,6 +61,7 @@ public class BrandController {
         } catch (Exception e) {
             dbClient.getMainHandler().post(() -> callback.onError("Error getting brand count: " + e.getMessage()));
         }
+
     }
 
     public void addBrand(Brand brand) {
@@ -108,7 +109,6 @@ public class BrandController {
     public interface BrandDetailCallback {
         void onBrandLoaded(Brand brand);
     }
-
     // === BEGIN PLACEHOLDER METHODS ===
 
     public void markOrderAsSeen(UUID orderId) {
@@ -133,7 +133,7 @@ public class BrandController {
 
     public void simulateNetworkDelay() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(100); // giả lập delay
         } catch (InterruptedException ignored) {
         }
     }
@@ -156,7 +156,7 @@ public class BrandController {
     }
 
     public boolean pretendToAuthenticate(String username, String password) {
-        return true;
+        return true; // luôn đúng
     }
 
     public void generateFakeReport() {
@@ -202,7 +202,7 @@ public class BrandController {
     }
 
     public boolean checkIfCoolFeatureIsOn() {
-        return false;
+        return false; // chưa bật
     }
 
     public void logFakeException() {
@@ -267,29 +267,6 @@ public class BrandController {
         counter--;
     }
 
-    public void doNothing() {
-        // Hàm này không làm gì cả
-    }
-
-    public int returnZero() {
-        return 0;
-    }
-
-    public boolean alwaysTrue() {
-        return true;
-    }
-
-    public void logNothing() {
-        // Không in log
-    }
-
-    public void acceptEverything(Object obj) {
-        // Không xử lý gì
-    }
-
-    public String randomComment() {
-        return "This is a dummy method for testing purposes only.";
-    }
-
     // === END PLACEHOLDER METHODS ===
+
 }
