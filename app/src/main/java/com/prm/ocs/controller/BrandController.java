@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-// Start of the code snippet
 public class BrandController {
     private final DatabaseClient dbClient;
     private final Context context;
