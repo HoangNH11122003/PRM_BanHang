@@ -70,4 +70,5 @@ public class AdminBrandAddFragment extends Fragment {
             Toast.makeText(getContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+    
 }
