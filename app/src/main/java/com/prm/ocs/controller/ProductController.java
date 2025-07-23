@@ -19,7 +19,7 @@ public class ProductController {
     private final Context _context;
     private final DatabaseClient dbClient;
 
-    // Constructor cho trường hợp có ProductView
+    // Constructor c  ho trường hợp có //ProductView
     public ProductController(ProductView view) {
         this.view = view;
         Context context = getContextFromView(view);
@@ -34,7 +34,7 @@ public class ProductController {
         this.dbClient = DatabaseClient.getInstance(context);
     }
 
-    // Helper method để lấy Context từ ProductView
+    // Helper method để lấy C ontext từ ProductView
     private Context getContextFromView(ProductView view) {
         if (view instanceof Fragment) {
             return ((Fragment) view).requireContext();
