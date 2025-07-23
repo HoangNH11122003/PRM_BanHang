@@ -180,4 +180,17 @@ public class ProductController {
         return "Hello, world!";
     }
 
+    // Hàm chỉ log ra console, không làm gì
+    public void doNothing() {
+        Log.d("BrandController", "This method does nothing.");
+    }
+
+    // Hàm tạo nhưng không gọi callback, không có hiệu quả
+    public void uselessLoad() {
+        dbClient.getExecutorService().execute(() -> {
+            List<Brand> ignored = dbClient.getAppDatabase().brandDao().getAllBrands();
+            // Không làm gì với kết quả
+        });
+    }
+
 }
