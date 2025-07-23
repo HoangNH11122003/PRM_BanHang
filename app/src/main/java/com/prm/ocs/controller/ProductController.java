@@ -176,7 +176,7 @@ public class ProductController {
     }
 
     public String dummyFunction4() {
-        // Hàm mẫu trả về một chuỗi bất kỳ
+
         return "Hello, world!";
     }
 
@@ -192,6 +192,20 @@ public class ProductController {
     public List<String> dummyFunction7() {
         // Hàm mẫu trả về danh sách rỗng
         return java.util.Collections.emptyList();
+    }
+
+    public void doAbsolutelyNothing() {
+        // Không có nội dung gì
+    }
+
+
+    public void acceptInputButIgnoreEverything(int x, String y) {
+        // Nhận dữ liệu nhưng không xử lý
+    }
+
+
+    public Product returnNullProduct() {
+        return null;
     }
 
 }
