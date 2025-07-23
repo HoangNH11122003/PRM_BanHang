@@ -21,6 +21,7 @@ import com.prm.ocs.ui.adapters.AdminProductListAdapter;
 import com.prm.ocs.ui.fragments.product.AdminProductDetailFragment;
 import com.prm.ocs.ui.view.base.ProductView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
