@@ -12,7 +12,9 @@ import com.prm.ocs.controller.BrandController;
 import com.prm.ocs.data.dto.BrandProductsDto;
 import com.prm.ocs.ui.adapters.BrandListAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class AdminBrandListFragment extends Fragment implements BrandController.BrandListCallback {
     private RecyclerView recyclerView;
