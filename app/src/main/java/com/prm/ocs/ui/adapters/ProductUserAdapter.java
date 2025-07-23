@@ -1,3 +1,85 @@
+// package com.prm.ocs.ui.adapters;
+
+// import android.content.Context;
+// import android.content.Intent;
+// import android.view.LayoutInflater;
+// import android.view.View;
+// import android.view.ViewGroup;
+// import android.widget.ImageView;
+// import android.widget.TextView;
+
+// import androidx.annotation.NonNull;
+// import androidx.recyclerview.widget.RecyclerView;
+
+// import com.bumptech.glide.Glide;
+// import com.prm.ocs.R;
+// import com.prm.ocs.data.db.entity.Product;
+// import com.prm.ocs.ui.view.product.ProductDetailActivity;
+
+// import java.util.ArrayList;
+// import java.util.List;
+
+// public class ProductUserAdapter extends RecyclerView.Adapter<ProductUserAdapter.ProductViewHolder> {
+
+//     private final Context context;
+//     private List<Product> products;
+
+//     public ProductUserAdapter(Context context) {
+//         this.context = context;
+//         this.products = new ArrayList<>();
+//     }
+
+//     public void setProducts(List<Product> products) {
+//         this.products = new ArrayList<>(products);
+//         notifyDataSetChanged();
+//     }
+
+//     @NonNull
+//     @Override
+//     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//         View view = LayoutInflater.from(context).inflate(R.layout.item_user_product, parent, false);
+//         return new ProductViewHolder(view);
+//     }
+
+//     @Override
+//     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+//         Product product = products.get(position);
+
+//         holder.nameTextView.setText(product.getName());
+//         holder.priceTextView.setText("$" + product.getSellingPrice());
+
+//         // Chỉ load ảnh từ drawable với tên ảnh
+//         String imageName = product.getImage();
+//         int imageResId = context.getResources().getIdentifier(imageName.replace(".png", ""), "drawable", context.getPackageName());
+//         Glide.with(context).load(imageResId).into(holder.imageView);
+
+//         holder.itemView.setOnClickListener(v -> {
+//             Intent intent = new Intent(context, ProductDetailActivity.class);
+//             intent.putExtra("productId", product.getProductId().toString());
+//             context.startActivity(intent);
+//         });
+//     }
+
+//     @Override
+//     public int getItemCount() {
+//         return products.size();
+//     }
+
+//     static class ProductViewHolder extends RecyclerView.ViewHolder {
+//         ImageView imageView;
+//         TextView nameTextView, priceTextView;
+
+//         public ProductViewHolder(@NonNull View itemView) {
+//             super(itemView);
+//             imageView = itemView.findViewById(R.id.clothes_image);
+//             nameTextView = itemView.findViewById(R.id.clothes_name);
+//             priceTextView = itemView.findViewById(R.id.clothes_price);
+//         }
+//     }
+// }
+
+
+
 package com.prm.ocs.ui.adapters;
 
 import android.content.Context;
